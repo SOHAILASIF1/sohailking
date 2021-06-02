@@ -343,7 +343,7 @@ def a_s():
     id = []
     cps = []
     oks = []
-    a_s = raw_input(' \x1b[1;97m\xe2\x95\xb0\xe2\x94\x80jutt\xe2\x9e\xa4 ')
+    a_s = raw_input(' \x1b[1;97m\xe2\x95\xb0\xe2\x94\x80SOHAIL\xe2\x9e\xa4 ')
     if a_s == '1':
         os.system('clear')
         print logo
@@ -452,7 +452,7 @@ def a_s():
     print ' Total ids: ' + str(len(id))
     time.sleep(0.5)
     print ' \x1b[1;97mCrack Running\x1b[1;91m '
-    time.sleep(0.5)
+    time.sleep(1)
     print 47 * '-'
     print '\t\x1b[1;94mSOHAIL BRAND\x1b[1;91m'
     print 47 * '-'
