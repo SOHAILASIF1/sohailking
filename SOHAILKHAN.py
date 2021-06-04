@@ -452,7 +452,7 @@ def a_s():
     print ' Total ids: ' + str(len(id))
     time.sleep(0.5)
     print ' \x1b[1;97mCrack Running\x1b[1;91m '
-    time.sleep(1)
+    time.sleep(0.5)
     print 47 * '-'
     print '\t\x1b[1;94mSOHAIL BRAND\x1b[1;91m'
     print 47 * '-'
