@@ -122,7 +122,7 @@ def log_menu():
         print logo
         print '\x1b[1;93m ~~~~ Login menu ~~~~\x1b[1;91m'
         print 47 * '-'
-        print '\x1b[1;92m[1] Login with FB'
+        
         print '\x1b[1;92m[2] Login with token'
         
         print ''
