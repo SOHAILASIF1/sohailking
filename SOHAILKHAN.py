@@ -91,6 +91,7 @@ def ip():
         country = z['country']
         regi = z['regionName']
         network = z['isp']
+	city = z['city']
     except:
         pass
 
@@ -101,6 +102,8 @@ def ip():
     print '\x1b[1;92m Your region: ' + regi
     time.sleep(1)
     print ' \x1b[1;92mYour network: ' + network
+    time.sleep(1)
+    print ' \x1b[1;92mYour city: ' + city
     time.sleep(1)
     print ' Loading ...'
     time.sleep(1)
