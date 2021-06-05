@@ -124,7 +124,7 @@ def log_menu():
         print 47 * '-'
         print '\x1b[1;92m[1] Login with FB'
         print '\x1b[1;92m[2] Login with token'
-        print '\x1b[1;92m[3] Login with cookies'
+        
         print ''
         log_menu_s()
 
@@ -135,8 +135,6 @@ def log_menu_s():
         log_fb()
     elif s == '2':
         log_token()
-    elif s == '3':
-        log_cookie()
     else:
         print ''
         print '\\ Select valid option '
@@ -186,49 +184,6 @@ def log_token():
     menu()
 
 
-def log_cookie():
-    os.system('clear')
-    print logo
-    print ''
-    print '\x1b[1;31;1mLogin Cookies'
-    print ''
-    try:
-        cookie = raw_input(' Paste cookies here: ')
-        data = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Kiwi Chrome/68.0.3438.0 Safari/537.36', 
-           'referer': 'https://m.facebook.com/', 
-           'host': 'm.facebook.com', 
-           'origin': 'https://m.facebook.com', 
-           'upgrade-insecure-requests': '1', 
-           'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7', 
-           'cache-control': 'max-age=0', 
-           'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 
-           'content-type': 'text/html; charset=utf-8', 
-           'cookie': cookie}
-        c1 = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers=data)
-        c2 = re.search('(EAAA\\w+)', c1.text)
-        hasil = c2.group(1)
-        ok = open('access_token.txt', 'w')
-        ok.write(hasil)
-        ok.close()
-        menu()
-    except AttributeError:
-        print ''
-        print '\tInvalid cookies'
-        print ''
-        raw_input(' \x1b[1;92mPress enter to try again ')
-        log_menu()
-    except UnboundLocalError:
-        print ''
-        print '\tInvalid cookies'
-        print ''
-        raw_input(' \x1b[1;92mPress enter to try again ')
-        log_menu()
-    except requests.exceptions.SSLError:
-        print ''
-        print '\tInvalid cookies'
-        print ''
-        raw_input(' \x1b[1;92mPress enter to try again ')
-        log_menu()
 
 
 def menu():
