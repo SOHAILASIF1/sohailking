@@ -131,9 +131,8 @@ def log_menu():
 
 def log_menu_s():
     s = raw_input(' \x1b[1;97m\xe2\x95\xb0\xe2\x94\x80SOHAIL\xe2\x9e\xa4 ')
+    
     if s == '1':
-        log_fb()
-    elif s == '2':
         log_token()
     else:
         print ''
@@ -142,33 +141,6 @@ def log_menu_s():
         log_menu_s()
 
 
-def log_fb():
-    os.system('clear')
-    print logo
-    print '\x1b[1;31;1mLogin with id/pass'
-    print 47 * '-'
-    lid = raw_input('\x1b[1;92m Id/mail/no: ')
-    pwds = raw_input(' \x1b[1;93mPassword: ')
-    try:
-        data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pwd).text
-        q = json.loads(data)
-        if 'loc' in q:
-            ts = open('access_token.txt', 'w')
-            ts.write(q['loc'])
-            ts.close()
-            menu()
-        elif 'www.facebook.com' in q['error']:
-            print ' User must verify account before login'
-            raw_input('\x1b[1;92m Press enter to try again ')
-            log_fb()
-        else:
-            print ' Id/Pass may be wrong'
-            raw_input(' \x1b[1;92mPress enter to try again ')
-            log_fb()
-    except:
-        print ''
-        print 'Exiting tool'
-        os.system('exit')
 
 
 def log_token():
