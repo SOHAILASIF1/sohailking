@@ -92,7 +92,7 @@ def ip():
         regi = z['regionName']
         network = z['isp']
 	city = z['city']
-	timezone = ['timezone']
+	timezone = z['timezone']
     except:
         pass
 
