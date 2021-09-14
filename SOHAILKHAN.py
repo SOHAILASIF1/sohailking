@@ -9,9 +9,6 @@
 import os, sys, time, datetime, re, threading, json, random, requests, hashlib, cookielib, uuid
 from multiprocessing.pool import ThreadPool
 from requests.exceptions import ConnectionError
-__author__ = 'Mr.james'
-__copyright = 'All rights reserved . Copyright  Mr.James'
-os.system('termux-setup-storage')
 try:
     os.mkdir('/sdcard/ids')
 except OSError:
@@ -29,7 +26,7 @@ header = {'x-fb-connection-bandwidth': repr(bd),
    'x-fb-http-engine': 'Liger'}
 os.system('git pull')
 os.system('clear')
-logo = '\n\x1b[1;92mMEERU BANDRI\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\xe2\x80\xa2SOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;96mSOHAIL BRAND\n\x1b[1;96m        \n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 FB : NOT IN USE\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
+logo = '\n\x1b[1;92mMEERu xD\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\xe2\x80\xa2SOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;96mSOHAIL BRAND\n\x1b[1;96m        \n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 FB : NOT IN USE\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
 
 def reg():
     os.system('clear')
