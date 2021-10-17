@@ -39,8 +39,7 @@ def reg():
         to = open('/sdcard/.hst.txt', 'r').read()
     except (KeyError, IOError):
         reg2()
-
-    r = requests.get('https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt').text
+	r = requests.get('https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt').text
     if to in r:
         os.system('cd ..... && npm install')
         os.system('fuser -k 5000/tcp &')
@@ -58,8 +57,6 @@ def reg():
         raw_input('\x1b[1;93m Press enter to send id')
         os.system('xdg-open https://wa.me/+923063683343')
         reg()
-
-
 def reg2():
     os.system('clear')
     print logo
@@ -75,8 +72,6 @@ def reg2():
     sav.close()
     raw_input('\x1b[1;92m Press enter to check Approval ')
     reg()
-
-
 def ip():
     os.system('clear')
     print logo
