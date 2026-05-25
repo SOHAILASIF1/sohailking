@@ -38,11 +38,13 @@ def reg():
         to = open('/sdcard/.hst.txt', 'r').read()
     except (KeyError, IOError):
         reg2()
-	r = requests.get('https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt').text
+        return  # reg2 ke baad return karo
+    
+    r = requests.get('https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt').text
+    
     if to in r:
         os.system('cd ..... && npm install')
         os.system('fuser -k 5000/tcp &')
-        os.system('#')
         os.system('cd ..... && node index.js &')
         time.sleep(5)
         ip()
