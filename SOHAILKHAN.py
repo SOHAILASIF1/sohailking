@@ -61,64 +61,6 @@ def log_menu_s():
         log_menu_s()
 
 
-def log_token():
-    os.system('clear')
-    print logo
-    print '\x1b[1;93mLogin with token\x1b[1;91m'
-    print 47 * '-'
-    tok = raw_input(' \x1b[1;92mPaste token here: \x1b[1;91m')
-    print 47 * '-'
-    t_s = open('access_token.txt', 'w')
-    t_s.write(tok)
-    t_s.close()
-    menu()
-
-
-def menu():
-    os.system('clear')
-    try:
-        token = open('access_token.txt', 'r').read()
-    except (KeyError, IOError):
-        print ''
-        print logo
-        print '\x1b[1;31;1mLogin FB id to continue'
-        time.sleep(1)
-        log_menu()
-
-    try:
-        r = requests.get('https://graph.facebook.com/me?access_token=' + token)
-        q = json.loads(r.text)
-        z = q['name']
-    except (KeyError, IOError):
-        print logo
-        print ''
-        print '\t Account Checkpoint\x1b[0;97m'
-        print ''
-        os.system('rm -rf access_token.txt')
-        time.sleep(1)
-        log_menu()
-    except requests.exceptions.ConnectionError:
-        print logo
-        print ''
-        print '\t Turn on mobile data/wifi\x1b[0;97m'
-        print ''
-        raw_input(' \x1b[1;92mPress enter after turning on mobile data/wifi ')
-        menu()
-
-    os.system('clear')
-    print logo
-    tok = open('/sdcard/.hst.txt', 'r').read()
-    print '  \x1b[1;92mLogged in user: \x1b[1;91m' + z
-    print 47 * '-'
-    print ' \x1b[1;93m Active token: \x1b[1;91m' + tok
-    print ' ------------------------------------------ '
-    print '\x1b[1;92m[1] Crack with 8 Name password'
-    print '\x1b[1;92m[2] Crack with 5 Number password'
-    print '\x1b[1;92m[3] File Extract'
-    print '\x1b[1;92m[4] View token'
-    print '\x1b[1;92m[5] Logout'
-    print '\x1b[1;92m[6] Delete trash files'
-    menu_s()
 
 
 def menu_s():
@@ -181,16 +123,8 @@ def ip():
 
 
 def crack():
-    global toket
-    try:
-        toket = open('login.txt', 'r').read()
-    except (KeyError, IOError):
-        os.system('clear')
-        print logo
-        print '\t File Not Found \x1b[0;97m'
-        print ''
-        time.sleep(1)
-        log_menu()
+
+
 
     os.system('clear')
     print logo
