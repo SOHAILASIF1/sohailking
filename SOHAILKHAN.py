@@ -26,7 +26,7 @@ header = {'x-fb-connection-bandwidth': repr(bd),
 os.system('git pull')
 os.system('clear')
 logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;91mSOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\xe2\x80\xa2SOHAIL BRAND\n\x1b[1;97mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;94mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;93mSOHAIL BRAND\n\x1b[1;96mSOHAIL BRAND\n\x1b[1;96m        \n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 FB : NOT IN USE\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
-
+def ip():
     os.system('clear')
     print logo
     print '\tCollecting device info'
