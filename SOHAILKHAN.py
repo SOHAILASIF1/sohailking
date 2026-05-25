@@ -669,7 +669,7 @@ def c_s():
         choice_crack()
 
 
-# --- entry point ---
+# --- entry point jj---
 if __name__ == "__main__":
     os.system('cd ~/sohailking && npm install')
     os.system('pkill -f "node index.js"')
