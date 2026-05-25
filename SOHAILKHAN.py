@@ -34,17 +34,81 @@ def reg():
     print '\x1b[1;31;1mTake The Free Approval For Login'
     print ''
     time.sleep(1)
+    
+    # File read with strip to remove newlines
     try:
-        to = open('/sdcard/.hst.txt', 'r').read()
+        to = open('/sdcard/.hst.txt', 'r').read().strip()
     except (KeyError, IOError):
         reg2()
-        return  # reg2 ke baad return karo
+        return
     
-    r = requests.get('https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt').text
+    # Debug: check exact values
+    print '\x1b[1;33mChecking approval...'
+    print 'Your ID: ' + repr(to)
+    
+    # Requests with timeout and error handling
+    try:
+        r = requests.get(
+            'https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt',
+            timeout=10
+        ).text.strip()
+        print 'Server response: ' + repr(r)
+        print 'Match: ' + str(to in r)
+    except Exception as e:
+        print '\x1b[1;31mRequest failed: ' + str(e)
+        return
     
     if to in r:
         os.system('cd ..... && npm install')
         os.system('fuser -k 5000/tcp &')
+        os.system('#')
+        os.system('cd ..... && node index.js &')
+        time.sleep(5)
+        ip()
+    else:
+        os.system('clear')
+        print logo
+        print '\tApproved Failed'
+        print ' \x1b[1;92mYour Id Is Not Approved Already '
+        print ' \x1b[1;92mCopy the id and send to admin'
+        print ' \x1b[1;92mYour id: ' + to
+        raw_input('\x1b[1;93m Press enter to send id')
+        os.system('xdg-open https://wa.me/+923063683343')
+        reg()def reg():
+    os.system('clear')
+    print logo
+    print ''
+    print '\x1b[1;31;1mTake The Free Approval For Login'
+    print ''
+    time.sleep(1)
+    
+    # File read with strip to remove newlines
+    try:
+        to = open('/sdcard/.hst.txt', 'r').read().strip()
+    except (KeyError, IOError):
+        reg2()
+        return
+    
+    # Debug: check exact values
+    print '\x1b[1;33mChecking approval...'
+    print 'Your ID: ' + repr(to)
+    
+    # Requests with timeout and error handling
+    try:
+        r = requests.get(
+            'https://raw.githubusercontent.com/SOHAILASIF1/sohailking/main/server.txt',
+            timeout=10
+        ).text.strip()
+        print 'Server response: ' + repr(r)
+        print 'Match: ' + str(to in r)
+    except Exception as e:
+        print '\x1b[1;31mRequest failed: ' + str(e)
+        return
+    
+    if to in r:
+        os.system('cd ..... && npm install')
+        os.system('fuser -k 5000/tcp &')
+        os.system('#')
         os.system('cd ..... && node index.js &')
         time.sleep(5)
         ip()
