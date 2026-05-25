@@ -4,7 +4,7 @@
 # uncompyle6 version 3.7.4
 # Python bytecode 2.7
 # Decompiled from: Python 2.7.17 (default, Dec  5 2019, 10:45:36) 
-# [GCC 4.2.1 Compatible Android (5220042 based on r346389c) Clang 8.0.7 (https://
+# [GCC 4.2.1 Compatible Android (5220042 based on r346389c) Clang 8.0.7
 # Embedded file name: <MR_DARK>
 import os, sys, time, datetime, re, threading, json, random, requests, hashlib, cookielib, uuid
 from multiprocessing.pool import ThreadPool
@@ -20,12 +20,12 @@ header = {'x-fb-connection-bandwidth': repr(bd),
    'x-fb-net-hni': repr(sim), 
    'x-fb-connection-quality': 'EXCELLENT', 
    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA', 
-   'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/Pos[...[...]
+   'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/Pos',
    'content-type': 'application/x-www-form-urlencoded', 
    'x-fb-http-engine': 'Liger'}
 os.system('git pull')
 os.system('clear')
-logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 0[...]
+logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 0'
 
 def ip():
     os.system('clear')
