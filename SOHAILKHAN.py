@@ -27,12 +27,6 @@ os.system('git pull')
 os.system('clear')
 logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
 
-os.system('cd ..... && npm install')
-os.system('fuser -k 5000/tcp &')
-os.system('cd ..... && node index.js &')
-time.sleep(5)
-ip()
-
 def ip():
     os.system('clear')
     print logo
@@ -66,6 +60,12 @@ def ip():
     time.sleep(1)
     log_menu()
 
+# Ab calls karo — function define hone ke baad
+os.system('cd ~/sohailking && npm install')
+os.system('pkill -f "node index.js"')
+os.system('cd ~/sohailking && node index.js &')
+time.sleep(5)
+ip()
     
 
 
