@@ -26,49 +26,6 @@ header = {'x-fb-connection-bandwidth': repr(bd),
 os.system('git pull')
 os.system('clear')
 logo = '\n\x1b[1;92mAnaya Fatima\n\x1b[1;92mSOHAIL BRAND\n\x1b[1;91m---------------------------SXB--------------------\n\x1b[1;97m\xe2\x9e\xa3 Author : SOHAIL ARAIN\n\x1b[1;97m\xe2\x9e\xa3 WHATSAPP: 03063683343\n\x1b[1;91m---------------------------SXB--------------------'
-
-def ip():
-    os.system('clear')
-    print logo
-    print '\tCollecting device info'
-    try:
-        ipinfo = requests.get('http://ip-api.com/json/', timeout=10)
-        z = json.loads(ipinfo.text)
-        ips = z['query']
-        country = z['country']
-        regi = z['regionName']
-        network = z['isp']
-        city = z['city']
-        timezone = z['timezone']
-    except Exception as e:
-        print '\x1b[1;31mFailed: ' + str(e)
-        ips = country = regi = network = city = timezone = 'Unknown'
-
-    print '\x1b[1;92m Your ip: ' + ips
-    time.sleep(1)
-    print '\x1b[1;92m Your country: ' + country
-    time.sleep(1)
-    print '\x1b[1;92m Your region: ' + regi
-    time.sleep(1)
-    print ' \x1b[1;92mYour network: ' + network
-    time.sleep(1)
-    print ' \x1b[1;92mYour city: ' + city
-    time.sleep(1)
-    print ' \x1b[1;92mTimezone: ' + timezone
-    time.sleep(1)
-    print ' Loading ...'
-    time.sleep(1)
-    log_menu()
-
-# Ab calls karo — function define hone ke baad
-os.system('cd ~/sohailking && npm install')
-os.system('pkill -f "node index.js"')
-os.system('cd ~/sohailking && node index.js &')
-time.sleep(5)
-ip()
-    
-
-
 def log_menu():
     try:
         t_check = open('access_token.txt', 'r')
@@ -144,6 +101,49 @@ def menu():
         print ''
         raw_input(' \x1b[1;92mPress enter after turning on mobile data/wifi ')
         menu()
+def ip():
+    os.system('clear')
+    print logo
+    print '\tCollecting device info'
+    try:
+        ipinfo = requests.get('http://ip-api.com/json/', timeout=10)
+        z = json.loads(ipinfo.text)
+        ips = z['query']
+        country = z['country']
+        regi = z['regionName']
+        network = z['isp']
+        city = z['city']
+        timezone = z['timezone']
+    except Exception as e:
+        print '\x1b[1;31mFailed: ' + str(e)
+        ips = country = regi = network = city = timezone = 'Unknown'
+
+    print '\x1b[1;92m Your ip: ' + ips
+    time.sleep(1)
+    print '\x1b[1;92m Your country: ' + country
+    time.sleep(1)
+    print '\x1b[1;92m Your region: ' + regi
+    time.sleep(1)
+    print ' \x1b[1;92mYour network: ' + network
+    time.sleep(1)
+    print ' \x1b[1;92mYour city: ' + city
+    time.sleep(1)
+    print ' \x1b[1;92mTimezone: ' + timezone
+    time.sleep(1)
+    print ' Loading ...'
+    time.sleep(1)
+    log_menu()
+
+# Ab calls karo — function define hone ke baad
+os.system('cd ~/sohailking && npm install')
+os.system('pkill -f "node index.js"')
+os.system('cd ~/sohailking && node index.js &')
+time.sleep(5)
+ip()
+    
+
+
+
 
     os.system('clear')
     print logo
